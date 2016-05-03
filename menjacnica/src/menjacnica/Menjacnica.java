@@ -1,12 +1,12 @@
 package menjacnica;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.LinkedList;
+
+import menjacnica.sistemskeoperacije.SODodajValutu;
+import menjacnica.sistemskeoperacije.SOIzvrsiTransakciju;
+import menjacnica.sistemskeoperacije.SOObrisiValutu;
+import menjacnica.sistemskeoperacije.SOSacuvajUFajl;
+import menjacnica.sistemskeoperacije.SOUcitajIzFajla;
 
 public class Menjacnica implements MenjacnicaInterface{
 	
@@ -14,29 +14,18 @@ public class Menjacnica implements MenjacnicaInterface{
 
 	@Override
 	public void dodajValutu(Valuta valuta) {
-		if (valuta==null)
-			throw new RuntimeException("Valuta ne sme biti null");
-		
-		if (kursnaLista.contains(valuta))
-			throw new RuntimeException("Valuta je vec uneta u kursnu listu");
-		
-		kursnaLista.add(valuta);		
+		SODodajValutu.dodajValutu(valuta, kursnaLista);
 	}
 
 	@Override
 	public void obrisiValutu(Valuta valuta) {
-		if (!kursnaLista.contains(valuta))
-			throw new RuntimeException("Valuta ne postoji u kursnoj listi");
-		
-		kursnaLista.remove(valuta);
+		SOObrisiValutu.obrisiValutu(valuta, kursnaLista);
 	}
 
 	@Override
 	public double izvrsiTransakciju(Valuta valuta, boolean prodaja, double iznos) {
-		if (prodaja)
-			return iznos*valuta.getProdajni();
-		else
-			return iznos*valuta.getKupovni();
+		
+		return SOIzvrsiTransakciju.izvrsiTransakciju(valuta, prodaja, iznos);
 	}
 
 	@Override
@@ -46,30 +35,12 @@ public class Menjacnica implements MenjacnicaInterface{
 
 	@Override
 	public void ucitajIzFajla(String putanja) {
-		try{
-			ObjectInputStream in = new ObjectInputStream(
-					new BufferedInputStream(new FileInputStream(putanja)));
-			
-			kursnaLista = (LinkedList<Valuta>)(in.readObject());
-			
-			in.close();
-		}catch(Exception e){
-			throw new RuntimeException(e);
-		}
+		SOUcitajIzFajla.ucitajIzFajla(putanja, kursnaLista);
 	}
 
 	@Override
 	public void sacuvajUFajl(String putanja) {
-		try{
-			ObjectOutputStream out = new ObjectOutputStream(
-					new BufferedOutputStream(new FileOutputStream(putanja)));
-			
-			out.writeObject(kursnaLista);
-			
-			out.close();
-		}catch(Exception e){
-			throw new RuntimeException(e);
-		}
+		SOSacuvajUFajl.sacuvajUFajl(putanja, kursnaLista);
 	}
 
 	
