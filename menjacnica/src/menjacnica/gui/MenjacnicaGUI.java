@@ -1,7 +1,6 @@
 package menjacnica.gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -128,6 +127,7 @@ public class MenjacnicaGUI extends JFrame {
 			btnObrisiKurs.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.prikaziObrisiKursGUI(getTable());
+					
 				}
 			});
 			btnObrisiKurs.setPreferredSize(new Dimension(140, 25));

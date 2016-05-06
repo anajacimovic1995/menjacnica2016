@@ -37,7 +37,7 @@ public class ObrisiKursGUI extends JFrame {
 	private JCheckBox chckbxZaistaObrisiKurs;
 	private JLabel label;
 	
-    Valuta valuta = GUIKontroler.vratiValutu();	
+	private Valuta valuta;
 	/**
 	 * Create the frame.
 	 */
@@ -70,7 +70,7 @@ public class ObrisiKursGUI extends JFrame {
 		
 		//podesavanje
 		
-		
+		valuta = GUIKontroler.vratiValutu();
 		prikaziValutu();
 	}
 

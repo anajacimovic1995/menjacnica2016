@@ -170,7 +170,7 @@ public class GUIKontroler {
 	/*
 	 * ObrisiKursGUI
 	 */
-	public static void obrisiValutu() {
+	public static  void obrisiValutu() {
 		try {
 			GUIKontroler.menjacnica.obrisiValutu(valuta);
 
