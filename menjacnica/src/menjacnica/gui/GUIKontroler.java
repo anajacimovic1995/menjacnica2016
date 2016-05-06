@@ -15,7 +15,7 @@ import menjacnica.gui.models.MenjacnicaTableModel;
 
 public class GUIKontroler {
 	private static MenjacnicaGUI glavniProzor;
-	private static MenjacnicaInterface menjacnica;
+	protected static Menjacnica menjacnica;
 	private static DodajKursGUI dodajKursGUI;
 	private static IzvrsiZamenuGUI izvrsiZamenuGUI;
 	private static ObrisiKursGUI obrisiKursGUI;
