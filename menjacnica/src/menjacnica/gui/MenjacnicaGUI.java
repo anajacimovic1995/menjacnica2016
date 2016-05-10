@@ -231,7 +231,7 @@ public class MenjacnicaGUI extends JFrame {
 	private JTable getTable() {
 		if (table == null) {
 			table = new JTable();
-			table.setModel(new MenjacnicaTableModel());
+			table.setModel(new MenjacnicaTableModel(GUIKontroler.vratiKursnuListu()));
 		}
 		return table;
 	}

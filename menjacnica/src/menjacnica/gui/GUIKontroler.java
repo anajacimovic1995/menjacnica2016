@@ -18,7 +18,7 @@ public class GUIKontroler {
 	protected static Menjacnica menjacnica;
 	private static DodajKursGUI dodajKursGUI;
 	private static IzvrsiZamenuGUI izvrsiZamenuGUI;
-	private static ObrisiKursGUI obrisiKursGUI;
+	private static ObrisiKursGUI obrisiProzor;
 	private static Valuta valuta;
 	
 	public static void main(String[] args) {
@@ -26,6 +26,7 @@ public class GUIKontroler {
 			public void run() {
 				try {
 					menjacnica = new Menjacnica();
+					//obrisiProzor = new ObrisiKursGUI();
 					glavniProzor = new MenjacnicaGUI();
 					glavniProzor.setVisible(true);
 					glavniProzor.setLocationRelativeTo(null);
@@ -175,9 +176,9 @@ public class GUIKontroler {
 			GUIKontroler.menjacnica.obrisiValutu(valuta);
 
 			glavniProzor.prikaziSveValute();
-			obrisiKursGUI.dispose();
+			obrisiProzor.dispose();
 		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(obrisiKursGUI.getContentPane(), e1.getMessage(), "Greska",
+			JOptionPane.showMessageDialog(glavniProzor, e1.getMessage(), "Greska",
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
